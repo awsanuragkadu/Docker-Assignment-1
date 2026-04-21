@@ -7,11 +7,15 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/2026Q1']],
-                    userRemoteConfigs: [[url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git']]
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git',
+                        credentialsId: 'git-token'
+                    ]]
                 ])
                 sh '''
                     mkdir -p /opt/deploy/C1
                     cp index.html /opt/deploy/C1/index.html
+                    chmod 644 /opt/deploy/C1/index.html
                     docker stop C1 || true
                     docker rm C1   || true
                     docker run -d \
@@ -27,11 +31,15 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/2026Q2']],
-                    userRemoteConfigs: [[url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git']]
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git',
+                        credentialsId: 'git-token'
+                    ]]
                 ])
                 sh '''
                     mkdir -p /opt/deploy/C2
                     cp index.html /opt/deploy/C2/index.html
+                    chmod 644 /opt/deploy/C2/index.html
                     docker stop C2 || true
                     docker rm C2   || true
                     docker run -d \
@@ -47,11 +55,15 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/2026Q3']],
-                    userRemoteConfigs: [[url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git']]
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git',
+                        credentialsId: 'git-token'
+                    ]]
                 ])
                 sh '''
                     mkdir -p /opt/deploy/C3
                     cp index.html /opt/deploy/C3/index.html
+                    chmod 644 /opt/deploy/C3/index.html
                     docker stop C3 || true
                     docker rm C3   || true
                     docker run -d \
