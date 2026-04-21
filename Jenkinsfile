@@ -7,7 +7,7 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/2026Q1']],
-                    userRemoteConfigs: [[url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/awsanuragkadu/https://github.com/awsanuragkadu/Docker-Assignment-1.git']]
                 ])
                 sh '''
                     mkdir -p /opt/deploy/C1
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/2026Q2']],
-                    userRemoteConfigs: [[url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/awsanuragkadu/https://github.com/awsanuragkadu/Docker-Assignment-1.git']]
                 ])
                 sh '''
                     mkdir -p /opt/deploy/C2
@@ -47,7 +47,7 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/2026Q3']],
-                    userRemoteConfigs: [[url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/awsanuragkadu/https://github.com/awsanuragkadu/Docker-Assignment-1.git']]
                 ])
                 sh '''
                     mkdir -p /opt/deploy/C3
