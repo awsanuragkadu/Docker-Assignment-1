@@ -15,7 +15,7 @@ pipeline {
                                 checkout([$class: 'GitSCM',
                                     branches: [[name: '*/2026Q1']],
                                     userRemoteConfigs: [[
-                                        url: 'https://github.com/YOUR_USER/YOUR_REPO.git',
+                                        url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git',
                                         credentialsId: 'git-token'
                                     ]]
                                 ])
@@ -37,7 +37,7 @@ pipeline {
                                 checkout([$class: 'GitSCM',
                                     branches: [[name: '*/2026Q2']],
                                     userRemoteConfigs: [[
-                                        url: 'https://github.com/YOUR_USER/YOUR_REPO.git',
+                                        url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git',
                                         credentialsId: 'git-token'
                                     ]]
                                 ])
@@ -59,7 +59,7 @@ pipeline {
                                 checkout([$class: 'GitSCM',
                                     branches: [[name: '*/2026Q3']],
                                     userRemoteConfigs: [[
-                                        url: 'https://github.com/YOUR_USER/YOUR_REPO.git',
+                                        url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git',
                                         credentialsId: 'git-token'
                                     ]]
                                 ])
@@ -88,7 +88,7 @@ pipeline {
                                 checkout([$class: 'GitSCM',
                                     branches: [[name: '*/2026Q1']],
                                     userRemoteConfigs: [[
-                                        url: 'https://github.com/YOUR_USER/YOUR_REPO.git',
+                                        url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git',
                                         credentialsId: 'git-token'
                                     ]]
                                 ])
@@ -110,7 +110,7 @@ pipeline {
                                 checkout([$class: 'GitSCM',
                                     branches: [[name: '*/2026Q2']],
                                     userRemoteConfigs: [[
-                                        url: 'https://github.com/YOUR_USER/YOUR_REPO.git',
+                                        url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git',
                                         credentialsId: 'git-token'
                                     ]]
                                 ])
@@ -132,7 +132,7 @@ pipeline {
                                 checkout([$class: 'GitSCM',
                                     branches: [[name: '*/2026Q3']],
                                     userRemoteConfigs: [[
-                                        url: 'https://github.com/YOUR_USER/YOUR_REPO.git',
+                                        url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git',
                                         credentialsId: 'git-token'
                                     ]]
                                 ])
