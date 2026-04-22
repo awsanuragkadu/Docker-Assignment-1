@@ -10,8 +10,14 @@ pipeline {
                 git branch: '2026Q1', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
 
                 sh '''
+                # Remove old container if exists
+                docker rm -f C1 || true
+
+                # Run new container
+                docker run -dit --name C1 -p 8081:80 httpd
+
+                # Copy updated index.html
                 docker cp index.html C1:/usr/local/apache2/htdocs/index.html
-                '''
             }
         }
 
@@ -21,8 +27,14 @@ pipeline {
             steps {
                 git branch: '2026Q2', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
                 sh '''
+                # Remove old container if exists
+                docker rm -f C2 || true
+
+                # Run new container
+                docker run -dit --name C2 -p 8081:80 httpd
+
+                # Copy updated index.html
                 docker cp index.html C2:/usr/local/apache2/htdocs/index.html
-                '''
             }
         }
 
@@ -32,9 +44,15 @@ pipeline {
             steps {
                 git branch: '2026Q3', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
 
-                sh '''
+               sh '''
+                # Remove old container if exists
+                docker rm -f C3 || true
+
+                # Run new container
+                docker run -dit --name C3 -p 8081:80 httpd
+
+                # Copy updated index.html
                 docker cp index.html C3:/usr/local/apache2/htdocs/index.html
-                '''
             }
         }
     }
