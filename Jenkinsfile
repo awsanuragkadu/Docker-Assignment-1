@@ -3,56 +3,76 @@ pipeline {
 
     stages {
 
-        stage('Deploy Q1') {
-            agent { label 'zoneA' }   // runs on slave-s1
+        stage('Deploy on Both Slaves') {
+            parallel {
 
-            steps {
-                git branch: '2026Q1', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
+                stage('Deploy on Slave1 (zoneA)') {
+                    agent { label 'zoneA' }
 
-                sh '''
-                # Remove old container if exists
-                docker rm -f C1 || true
+                    stages {
 
-                # Run new container
-                docker run -dit --name C1 -p 8081:80 httpd
+                        stage('Q1 → C1') {
+                            steps {
+                                git branch: '2026Q1', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
+                                sh '''
+                                docker cp index.html C1:/usr/local/apache2/htdocs/index.html
+                                '''
+                            }
+                        }
 
-                # Copy updated index.html
-                docker cp index.html C1:/usr/local/apache2/htdocs/index.html
-            }
-        }
+                        stage('Q2 → C2') {
+                            steps {
+                                git branch: '2026Q2', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
+                                sh '''
+                                docker cp index.html C2:/usr/local/apache2/htdocs/index.html
+                                '''
+                            }
+                        }
 
-        stage('Deploy Q2') {
-            agent { label 'zoneB' }   // runs on slave-s2
+                        stage('Q3 → C3') {
+                            steps {
+                                git branch: '2026Q3', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
+                                sh '''
+                                docker cp index.html C3:/usr/local/apache2/htdocs/index.html
+                                '''
+                            }
+                        }
+                    }
+                }
 
-            steps {
-                git branch: '2026Q2', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
-                sh '''
-                # Remove old container if exists
-                docker rm -f C2 || true
+                stage('Deploy on Slave2 (zoneB)') {
+                    agent { label 'zoneB' }
 
-                # Run new container
-                docker run -dit --name C2 -p 8081:80 httpd
+                    stages {
 
-                # Copy updated index.html
-                docker cp index.html C2:/usr/local/apache2/htdocs/index.html
-            }
-        }
+                        stage('Q1 → C1') {
+                            steps {
+                                git branch: '2026Q1', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
+                                sh '''
+                                docker cp index.html C1:/usr/local/apache2/htdocs/index.html
+                                '''
+                            }
+                        }
 
-        stage('Deploy Q3') {
-            agent { label 'zoneA' }   // you can choose any slave
+                        stage('Q2 → C2') {
+                            steps {
+                                git branch: '2026Q2', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
+                                sh '''
+                                docker cp index.html C2:/usr/local/apache2/htdocs/index.html
+                                '''
+                            }
+                        }
 
-            steps {
-                git branch: '2026Q3', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
-
-               sh '''
-                # Remove old container if exists
-                docker rm -f C3 || true
-
-                # Run new container
-                docker run -dit --name C3 -p 8081:80 httpd
-
-                # Copy updated index.html
-                docker cp index.html C3:/usr/local/apache2/htdocs/index.html
+                        stage('Q3 → C3') {
+                            steps {
+                                git branch: '2026Q3', url: 'https://github.com/awsanuragkadu/Docker-Assignment-1.git'
+                                sh '''
+                                docker cp index.html C3:/usr/local/apache2/htdocs/index.html
+                                '''
+                            }
+                        }
+                    }
+                }
             }
         }
     }
